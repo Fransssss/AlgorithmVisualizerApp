@@ -52,5 +52,3 @@ This way, you **learn by watching** — just like watching how dominoes fall or 
 - “Learn Mode” vs “Challenge Mode” (like a game!)
 
 ---
-
-As always made with 💙 to make learning algorithms **less scary and more satisfying**.
