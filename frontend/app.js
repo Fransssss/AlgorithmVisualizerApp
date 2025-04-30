@@ -1,7 +1,11 @@
 // Toggle dark mode
-document.getElementById("dark-toggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-  });
+const toggleBtn = document.getElementById("dark-toggle");
+
+toggleBtn.addEventListener("click", () => {
+  const isDark = document.body.classList.toggle("dark");
+  toggleBtn.textContent = isDark ? "☀️ Light View Mode" : "🌙 Dark View Mode";
+});
+
   
   // Visualization (basic sample for bars)
   const visualizer = document.getElementById("visualizer");
@@ -16,6 +20,7 @@ document.getElementById("dark-toggle").addEventListener("click", () => {
       bar.classList.add("bar");
       bar.style.height = `${height}px`;
       visualizer.appendChild(bar);
+      visualizer.style.setProperty('--num-bars', num);
     }
   }
   

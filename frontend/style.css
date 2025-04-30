@@ -5,26 +5,52 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f7f9fc;
-    color: #333;
-    transition: background 0.3s, color 0.3s;
-    padding: 1rem;
-    min-height: 100vh;
+    min-width: 320px; /* Minimum for small phones */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, #f7f9fc, #e1ecf9);
 }
 
 header, footer {
     text-align: center;
     padding: 1rem;
+    margin-bottom: 1rem;
     background: #eaf3ff;
     border-radius: 10px;
-    margin-bottom: 1rem;
 }
 
 main {
-    max-width: 900px;
-    margin: 0 auto;
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+}
+
+.label-wrapper {
+    flex-shrink: 0;
+}
+
+.stacked-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* or center for centered text */
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1.2;
+}  
+
+label {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
 }
 
 .controls {
@@ -33,6 +59,12 @@ main {
     justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
 }
 
 button, select {
@@ -60,25 +92,40 @@ button:hover {
     border-radius: 8px;
     padding: 1rem;
     gap: 4px;
-    transition: background 0.3s;
+    transition: all 0.3s;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto; 
+    gap: 2px;            /* or even 0px if needed */
+    padding: 0.5rem;     /* reduce padding */  
+    height: 50vh;        
+    max-height: 500px;   
 }
 
 .bar {
-    width: 20px;
+    min-width: 11.5px; 
+    max-width: 40px;
+    width: 40px;         /* bars thickness */
     background: #5cb85c;
-    transition: height 0.3s, background 0.3s;
+    width: calc(100% / var(--num-bars) - 4px);
+    transition: all 0.3s;
     border-radius: 4px;
 }
 
 footer {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-top: 2rem;
 }
 
-  /* Dark Mode */
+/* Dark View Mode */
+#dark-toggle {
+    margin-top: 8px;
+}
+
 body.dark {
     background-color: #1e1e1e;
     color: #eee;
+    background: linear-gradient(to bottom, #1e1e1e, #2a2a2a);
 }
 
 body.dark .visualizer {
@@ -94,4 +141,30 @@ body.dark button,
 body.dark select {
     background: #444;
     color: #eee;
+}
+
+
+/* Mobile view */
+@media (max-width: 480px) {
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .label-wrapper {
+        margin-bottom: 0.5rem;
+    }
+
+    .stacked-label {
+        margin-top: 1rem;
+    }
+
+    .visualizer {
+        height: 430px;
+    }
+
+    button, select {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
 }
