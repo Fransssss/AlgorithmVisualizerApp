@@ -53,4 +53,4 @@ This way, you **learn by watching** — just like watching how dominoes fall or 
 
 ---
 
-Made with 💙 to make learning algorithms **less scary and more satisfying**.
+As always made with 💙 to make learning algorithms **less scary and more satisfying**.
