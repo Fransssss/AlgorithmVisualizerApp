@@ -1,0 +1,77 @@
+---
+
+### The Customer Journey (Explained Simply)
+
+---
+
+#### Step 1: You open the website
+
+- You land on a page that **feels chill and simple**, with a soft background and a friendly message like:
+  > *“🧠 Visualize Algorithms Calmly”*
+
+- You already feel it’s not trying to stress you out like textbooks do.
+
+---
+
+#### Step 2: Choose what you want to learn
+
+- There’s a **dropdown menu** that says:  
+  > *“Choose Algorithm”*
+
+- You click it and see options like:
+  - Bubble Sort
+  - Merge Sort
+  - Quick Sort
+  - BFS (graph)
+  - DFS (graph)
+
+- Let's say you pick **Bubble Sort**.
+
+---
+
+#### Step 3: Click **Start**
+
+- You hit the **Start** button.
+- The screen below begins showing **colored bars** (like Lego bricks).
+- Some bars start **glowing or moving** — this shows how Bubble Sort compares and swaps items step by step.
+- You **see the algorithm in action** rather than trying to imagine it in your head!
+
+---
+
+#### Step 4: Relax and watch
+
+- There's no pressure. You can just:
+  - **Pause** if it's too fast
+  - **Reset** to try again
+  - Adjust the **speed slider** if you want it slower or faster
+- You’re *watching the logic* — like seeing a puzzle solve itself.
+
+---
+
+#### Optional: Click **Dark Mode**
+
+- If you're using the app at night or prefer darker backgrounds, you can hit the **"🌙 Toggle Dark Mode"** button at the top.
+- Instantly the whole site changes to a soft dark theme — your eyes thank you.
+
+---
+
+#### Step 5: Try another algorithm
+
+- After finishing Bubble Sort, you’re curious.
+- You go back to the dropdown and pick **DFS (graph)**.
+- Now you see **circles and lines** (like nodes and paths).
+- You click Start, and you see how the algorithm explores the graph — **one node at a time**.
+
+---
+
+### Why This App Feels Good to Use
+
+- You don’t feel rushed.
+- You don’t need to know code.
+- You can **see** how sorting or graph searching works.
+- It’s **interactive**, and you’re learning by doing.
+- It feels like a **visual game**, not a math exam.
+
+---
+
+Would you like me to plug in the actual **Bubble Sort animation** next so we make that part work?
