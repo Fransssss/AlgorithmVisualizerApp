@@ -1,6 +1,4 @@
-# AlgorithmVisualizer
-
-# 🧠 Algorithm Visualizer - Calm & Clear Learning
+# Algorithm Visualizer - Calm & Clear Learning
 
 An interactive and beginner-friendly website to **visualize sorting and graph algorithms** in a calm, stress-free environment. Built for students who want to *see* how algorithms work, not just read about them.
 
