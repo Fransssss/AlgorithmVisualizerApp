@@ -12,7 +12,7 @@ html, body {
 }
 
 body {
-    min-width: 320px; /* Minimum for small phones */
+    min-width: 320px;   /* Minimum for small phones */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
