@@ -6,7 +6,6 @@ toggleBtn.addEventListener("click", () => {
   toggleBtn.textContent = isDark ? "☀️ Light View Mode" : "🌙 Dark View Mode";
 });
 
-  
   // Visualization (basic sample for bars)
   const visualizer = document.getElementById("visualizer");
   const startBtn = document.getElementById("start-btn");
@@ -30,44 +29,38 @@ toggleBtn.addEventListener("click", () => {
 
   // === Bubble Sort w animation ===
   async function bubbleSort() {
-    const bars = document.querySelectorAll(".bar"); // Get all bars 
-    const delay = 100;                              // How long to wait (ms)
-
-    // Turn off buttons while sorting 
+    const bars = document.querySelectorAll(".bar");
+    const delay = 100;
+  
     disableControls();
-
-    // Outer loop that controls how many passes 
-    for (let i = 0; 8< bars.length - 1; i++){
-      // Inner loop that goes through the list to compare each pair
-      for (let j = 0; j < bars.length - 1-1;j++){
-        // Highlight the two bars that're compared
-        bars[j].style.background = "#f39c12";       // orange
-        bars[j + 1].style.background = "#f39c12";   // orange
-
-        await sleep(delay);  // pause to see the step 
-
-        // Get the values (heights) of the two bars
+  
+    for (let i = 0; i < bars.length - 1; i++) {
+      for (let j = 0; j < bars.length - i - 1; j++) {
+        bars[j].style.background = "#f39c12";
+        bars[j + 1].style.background = "#f39c12";
+  
+        await sleep(delay);
+  
         const val1 = parseInt(bars[j].dataset.value);
         const val2 = parseInt(bars[j + 1].dataset.value);
-
-        // Swap if the first bar is taller than the next one
+  
         if (val1 > val2) {
-          swapHeights(bars[j],bars[j+1]);
+          swapHeights(bars[j], bars[j + 1]);
         }
-
-        // Reset their colors back to green 
+  
         bars[j].style.background = "#5cb85c";
         bars[j + 1].style.background = "#5cb85c";
       }
     }
-
-    enableControls(); // Turn buttons back on 
+  
+    enableControls();
   }
+  
 
   // Swap height between two bars 
   function swapHeights(bar1,bar2){
     const tempHeight = bar1.style.height; // Store height of bar1
-    const tempValue = bar.dataset.value;  // Store data value of bar1
+    const tempValue = bar1.dataset.value;  // Store data value of bar1
     bar1.style.height = bar2.style.height; 
     bar1.dataset.value = bar2.dataset.value;
     bar2.style.height = tempHeight;
