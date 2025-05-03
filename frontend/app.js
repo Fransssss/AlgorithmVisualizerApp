@@ -14,25 +14,28 @@ toggleBtn.addEventListener("click", () => {
 
   function generateBars(num = 30) {
     visualizer.innerHTML = '';
+  
     for (let i = 0; i < num; i++) {
-      const height = Math.floor(Math.random() * 250) + 30;
+      const value = Math.floor(Math.random() * 100) + 1;
       const bar = document.createElement("div");
       bar.classList.add("bar");
-      bar.style.height = `${height}px`;
+      bar.dataset.value = value;
+      bar.style.height = `${value * 3}px`; // Scale for visibility
+      bar.textContent = value; // Show value inside the bar
       visualizer.appendChild(bar);
-      visualizer.style.setProperty('--num-bars', num);
     }
   }
+  
   
   // Run when page loads
   generateBars();
 
   // === Bubble Sort w animation ===
   async function bubbleSort() {
-    const bars = document.querySelectorAll(".bar");
     const delay = 100;
-  
     disableControls();
+  
+    let bars = visualizer.querySelectorAll(".bar");
   
     for (let i = 0; i < bars.length - 1; i++) {
       for (let j = 0; j < bars.length - i - 1; j++) {
@@ -45,7 +48,10 @@ toggleBtn.addEventListener("click", () => {
         const val2 = parseInt(bars[j + 1].dataset.value);
   
         if (val1 > val2) {
-          swapHeights(bars[j], bars[j + 1]);
+          swapBars(bars[j], bars[j + 1]);
+  
+          // After swap, reselect bars (DOM changed!)
+          bars = visualizer.querySelectorAll(".bar");
         }
   
         bars[j].style.background = "#5cb85c";
@@ -55,17 +61,15 @@ toggleBtn.addEventListener("click", () => {
   
     enableControls();
   }
-  
 
   // Swap height between two bars 
-  function swapHeights(bar1,bar2){
-    const tempHeight = bar1.style.height; // Store height of bar1
-    const tempValue = bar1.dataset.value;  // Store data value of bar1
-    bar1.style.height = bar2.style.height; 
-    bar1.dataset.value = bar2.dataset.value;
-    bar2.style.height = tempHeight;
-    bar2.dataset.value = tempValue;
+  function swapBars(bar1, bar2) {
+    const temp = bar2.nextSibling;
+    visualizer.insertBefore(bar2, bar1);
+    if (temp) visualizer.insertBefore(bar1, temp);
+    else visualizer.appendChild(bar1);
   }
+  
 
   // Helper to pause process 
   function sleep(ms) {
