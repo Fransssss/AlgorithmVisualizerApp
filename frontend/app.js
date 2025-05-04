@@ -107,3 +107,7 @@ toggleBtn.addEventListener("click", () => {
   // Init
   generateBars();
   
+// (Optional Enhancements Later)
+// Smooth horizontal transitions with transform or animation
+// Highlight sorted bars at the end
+// Add step counter or narration ("Comparing 35 and 20... Swapping!")
