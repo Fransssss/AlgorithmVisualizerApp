@@ -13,27 +13,71 @@ const startBtn = document.getElementById("start-btn");       // "Start" button
 const resetBtn = document.getElementById("reset-btn");       // "Reset" button
 const algoSelect = document.getElementById("algo-select");   // Dropdown to choose sorting algorithm
 
+// Get popup elements
+const popup = document.getElementById("algo-popup");
+const popupText = document.getElementById("popup-text");
+const closePopup = document.getElementById("close-popup");
+
 // === Generate random bars to visualize ===
-function generateBars(num = 30) {
-  visualizer.innerHTML = ''; // Clear any old bars before making new ones
+function generateBars(num = 12) {                      // Generate '24' bars
+  visualizer.innerHTML = '';                           // Clear any old bars before making new ones
 
   for (let i = 0; i < num; i++) {
     const value = Math.floor(Math.random() * 100) + 1; // Pick a number between 1 and 100
-    const bar = document.createElement("div"); // Create a new bar element
-    bar.classList.add("bar");                  // Give it the class for styling
-    bar.dataset.value = value;                 // Store the value inside the bar as data
-    bar.style.height = `${value * 3.95}px`;    // Set the height visually (multiplied for better size)
-    bar.textContent = value;                   // Show the number on the bar
-    visualizer.appendChild(bar);               // Add it to the visualizer area
+    const bar = document.createElement("div");         // Create a new bar element
+    bar.classList.add("bar");                          // Give it the class for styling
+    bar.dataset.value = value;                         // Store the value inside the bar as data
+    bar.style.height = `${value * 3.95}px`;            // Set the height visually (multiplied for better size)
+    bar.textContent = value;                           // Show the number on the bar
+    visualizer.appendChild(bar);                       // Add it to the visualizer area
   }
 }
 
 // Run the bar creation when the page loads
 generateBars();
 
+// === Turn off buttons during animation to avoid bugs ===
+function disableControls(){
+  startBtn.disabled = true;       // Disable Start button
+  resetBtn.disabled = true;       // Disable Reset button
+  algoSelect.disabled = true;     // Disable dropdown
+}
+
+// === Re-enable buttons when animation is done ===
+function enableControls() {
+  startBtn.disabled = false;
+  resetBtn.disabled = false;
+  algoSelect.disabled = false;
+}
+
+// === Swap two bars in the DOM to move them left/right ===
+function swapBars(bar1, bar2) {
+  const temp = bar2.nextSibling;                 // Save the bar after bar2
+  visualizer.insertBefore(bar2, bar1);           // Move bar2 before bar1
+  if (temp) visualizer.insertBefore(bar1, temp); // Put bar1 where bar2 used to be
+  else visualizer.appendChild(bar1);             // If bar2 was last, put bar1 at the end
+}
+
+// === Pause for a certain time (to animate steps) ===
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms)); // Wait for ms milliseconds
+}
+
+// Show popup with explanation text
+function showExplanation(algorithm) {
+  if (algorithm === "bubble") {
+    popupText.textContent = "Bubble Sort compares two bars at a time and pushes the biggest to the end in each round. Repeats until sorted.";
+  } else {
+    popupText.textContent = "This algorithm explanation will appear once implemented.";
+  }
+
+  popup.classList.remove("hidden");  // Hide the popup again
+}
+
 // === Bubble Sort Algorithm with animation ===
 async function bubbleSort() {
   const delay = 300; // Time to pause between steps (in milliseconds)
+  
   disableControls(); // Turn off buttons so user can’t interfere
 
   let bars = visualizer.querySelectorAll(".bar"); // Get all bars currently shown
@@ -62,38 +106,19 @@ async function bubbleSort() {
     }
   }
 
-  enableControls(); // Turn buttons back on when done
+  enableControls();           // Turn buttons back on when done
+  showExplanation("bubble");  // Show popup explanation
 }
 
-// === Swap two bars in the DOM to move them left/right ===
-function swapBars(bar1, bar2) {
-  const temp = bar2.nextSibling;         // Save the bar after bar2
-  visualizer.insertBefore(bar2, bar1);   // Move bar2 before bar1
-  if (temp) visualizer.insertBefore(bar1, temp); // Put bar1 where bar2 used to be
-  else visualizer.appendChild(bar1);     // If bar2 was last, put bar1 at the end
-}
-
-// === Pause for a certain time (used to animate steps) ===
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms)); // Wait for ms milliseconds
-}
-
-// === Turn off buttons during animation to avoid bugs ===
-function disableControls(){
-  startBtn.disabled = true;       // Disable Start button
-  resetBtn.disabled = true;       // Disable Reset button
-  algoSelect.disabled = true;     // Disable dropdown
-}
-
-// === Re-enable buttons when animation is done ===
-function enableControls() {
-  startBtn.disabled = false;
-  resetBtn.disabled = false;
-  algoSelect.disabled = false;
-}
+// Close popup when user clicks "I got it"
+closePopup.addEventListener("click", () => {
+  console.log("Popup closed");
+  popup.classList.add("hidden");
+});
 
 // === When the "Start" button is clicked ===
 startBtn.addEventListener("click", () => {
+  console.log("You pressed 'Start btn");
   const algo = algoSelect.value; // Get the selected algorithm from dropdown
   console.log("> Algo : ", algo); // Log it in the console for debugging
 
@@ -106,11 +131,12 @@ startBtn.addEventListener("click", () => {
 
 // === When the "Reset" button is clicked ===
 resetBtn.addEventListener("click", () => {
+  console.log("You pressed 'Reset btn");
   generateBars(); // Create a new set of random bars
 });
 
-// === Run bar generation again just to ensure reset ===
-generateBars();
+// === Run bar generation again just to ensure reset if necessary ===
+// generateBars();
 
 // (Optional Enhancements Later)
 // - Add smooth movement when swapping bars
