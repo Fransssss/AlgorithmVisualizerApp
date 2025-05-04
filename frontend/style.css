@@ -94,7 +94,6 @@ button:hover {
     gap: 4px;
     transition: all 0.3s;
     width: 100%;
-    max-width: 1000px;
     margin: 0 auto; 
     gap: 2px;            /* or even 0px if needed */
     padding: 0.5rem;     /* reduce padding */  
@@ -110,6 +109,7 @@ button:hover {
     width: calc(100% / var(--num-bars) - 4px);
     transition: all 0.3s;
     border-radius: 4px;
+    width: 26px;
 }
 
 footer {
