@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Algorithm Visualizer</title>
+    <!-- Link CSS  -->
+    <link rel="stylesheet" href="/temp_frontend/copy_style.css">
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <h1>Algorithm Visualizer</h1>
+        <button id="dark-toogle">Dark View Mode</button>
+    </header>
+
+    <!-- main -->
+    <main>
+
+        <div class="controls">
+            
+            <div class="label-wrapper">
+                <label for="algo-select" class="stacked-label">
+                    <span>Choose</span>
+                    <span>Algorithm</span>
+                </label>
+            </div>
+
+            <select id="algo-select">
+                <option value="default">Choose an algorithm</option>
+                <option value="bubble">Bubble Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="quick">Quick Sort</option>
+                <option value="dfs">Graph DFS</option>
+                <option value="bfs">Graph BFS</option>
+            </select>
+
+            <div class="button-group">
+                <button id="start-btn">Start</button>
+                <button id="reset-btn">Reset</button>
+            </div>
+
+            <div id="algo-popup" class="popup hidden">
+                <div class="popup-content">
+                    <h3 id="popup-title">How it works ?</h3>
+                    <p id="popup-text"></p>
+                    <button id="close-popup">I got it!</button>
+                </div>
+            </div>
+
+            <div id="visualizer" class="visualizer">===</div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer  -->
+    <footer>
+        <p>Built with 💙 for learning algorithm with ease</p>
+    </footer>
+
+    <!-- Link JS  -->
+    <script src="/temp_frontend/copy_app.js"></script>
+</body>
+</html>
