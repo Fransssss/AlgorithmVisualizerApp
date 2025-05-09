@@ -47,7 +47,6 @@ function disableControls(){
 
   algoSelect.disabled = true; 
   algoSelect.classList.add("disabled-color");
-
 }
 
 // === Re-enable buttons when animation is done ===
@@ -102,7 +101,7 @@ async function bubbleSort() {
       bars[j].style.background = "#f39c12";     // Highlight first bar (orange)
       bars[j + 1].style.background = "#f39c12"; // Highlight second bar (orange)
 
-      await sleep(delay); // Wait before continuing so we can see it
+      await sleep(delay);                       // Wait before continuing so we can see it
 
       const val1 = parseInt(bars[j].dataset.value);       // Get value of first bar
       const val2 = parseInt(bars[j + 1].dataset.value);   // Get value of second bar
@@ -114,7 +113,7 @@ async function bubbleSort() {
         bars = visualizer.querySelectorAll(".bar"); // Refresh the list of bars since their order changed
       }
 
-      bars[j].style.background = "#5cb85c";     // Turn bar back to green after comparison
+      bars[j].style.background = "#5cb85c";        // Turn bar back to green after comparison
       bars[j + 1].style.background = "#5cb85c";
     }
   }
@@ -138,7 +137,8 @@ startBtn.addEventListener("click", () => {
   if (algo === "bubble") {
     bubbleSort(); // Run Bubble Sort if selected
   } else {
-    alert("Algorithm will animate soon! For now, just relax and see bars."); // Placeholder
+    showExplanation("TBA")
+    // TODO: Add the rest of the algorithm
   }
 });
 
@@ -149,7 +149,7 @@ resetBtn.addEventListener("click", () => {
 });
 
 // === Run bar generation again just to ensure reset if necessary ===
-generateBars();
+// generateBars();
 
 // (Optional Enhancements Later)
 // - Add smooth movement when swapping bars
