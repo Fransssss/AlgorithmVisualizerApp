@@ -7,11 +7,11 @@ toggleBtn.addEventListener("click", () => {
   toggleBtn.textContent = isDark ? "☀️ Light View Mode" : "🌙 Dark View Mode";
 });
 
-// === Get all the main buttons and visual area ===
-const visualizer = document.getElementById("visualizer");    // Where bars appear
+// // === Get all the main buttons and visual area ===
 const startBtn = document.getElementById("start-btn");       // "Start" button
 const resetBtn = document.getElementById("reset-btn");       // "Reset" button
 const algoSelect = document.getElementById("algo-select");   // Dropdown to choose sorting algorithm
+const visualizer = document.getElementById("visualizer");    // Where bars appear
 
 // Get popup elements
 const popup = document.getElementById("algo-popup");
@@ -38,16 +38,29 @@ generateBars();
 
 // === Turn off buttons during animation to avoid bugs ===
 function disableControls(){
-  startBtn.disabled = true;       // Disable Start button
-  resetBtn.disabled = true;       // Disable Reset button
-  algoSelect.disabled = true;     // Disable dropdown
+  // Disable Start button
+  startBtn.disabled = true;   
+  startBtn.classList.add("disabled-color"); 
+
+  resetBtn.disabled = true;
+  resetBtn.classList.add("disabled-color");     
+
+  algoSelect.disabled = true; 
+  algoSelect.classList.add("disabled-color");
+
 }
 
 // === Re-enable buttons when animation is done ===
 function enableControls() {
-  startBtn.disabled = false;
+  // Enable Start button
+  startBtn.disabled = false;   
+  startBtn.classList.remove("disabled-color"); 
+
   resetBtn.disabled = false;
-  algoSelect.disabled = false;
+  resetBtn.classList.remove("disabled-color");     
+
+  algoSelect.disabled = false; 
+  algoSelect.classList.remove("disabled-color");
 }
 
 // === Swap two bars in the DOM to move them left/right ===
@@ -118,8 +131,8 @@ closePopup.addEventListener("click", () => {
 
 // === When the "Start" button is clicked ===
 startBtn.addEventListener("click", () => {
-  console.log("You pressed 'Start btn");
   const algo = algoSelect.value; // Get the selected algorithm from dropdown
+  console.log("You pressed 'Start btn");
   console.log("> Algo : ", algo); // Log it in the console for debugging
 
   if (algo === "bubble") {
@@ -136,7 +149,7 @@ resetBtn.addEventListener("click", () => {
 });
 
 // === Run bar generation again just to ensure reset if necessary ===
-// generateBars();
+generateBars();
 
 // (Optional Enhancements Later)
 // - Add smooth movement when swapping bars
